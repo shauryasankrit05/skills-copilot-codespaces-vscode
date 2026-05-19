@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JEE Command Center — Premium Elite Study Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <div id="bg-gradient" class="bg-gradient-animated"></div>
+    <div class="app-container">
+      <nav class="navbar glass-effect">
+        <div class="nav-brand">
+          <div class="nav-icon">⚡</div>
+          <div class="nav-text">
+            <span class="nav-title">JEE Command Center</span>
+            <span class="nav-subtitle">Elite Preparation OS</span>
+          </div>
+        </div>
+        <div class="nav-center">
+          <div class="nav-stat" id="streakBadge">🔥 0 day streak</div>
+          <div class="nav-stat" id="productivityBadge">🎯 0/100</div>
+        </div>
+        <div class="nav-controls">
+          <div id="liveClock" class="live-clock">--:--:--</div>
+          <button id="themeToggle" class="btn-theme" aria-label="Toggle theme">🌙</button>
+        </div>
+      </nav>
+
+      <main class="dashboard-main">
+        <section class="hero-section glass-effect fade-in-up">
+          <div class="hero-content">
+            <p class="hero-eyebrow">Welcome back</p>
+            <h1 id="heroGreeting" class="hero-heading">Good evening, Shaurya 👋</h1>
+            <p class="hero-subheading">Let's dominate today's preparation with focused intention and elite performance.</p>
+            <div class="hero-badges">
+              <div class="badge-item">
+                <span class="badge-icon">🔥</span>
+                <div class="badge-content">
+                  <div class="badge-label">Streak</div>
+                  <div class="badge-value" id="heroBadgeStreak">0 days</div>
+                </div>
+              </div>
+              <div class="badge-item">
+                <span class="badge-icon">🎯</span>
+                <div class="badge-content">
+                  <div class="badge-label">Productivity</div>
+                  <div class="badge-value" id="heroBadgeProductivity">Elite</div>
+                </div>
+              </div>
+              <div class="badge-item">
+                <span class="badge-icon">⚡</span>
+                <div class="badge-content">
+                  <div class="badge-label">Focus Avg</div>
+                  <div class="badge-value" id="heroBadgeFocus">0.0</div>
+                </div>
+              </div>
+              <div class="badge-item">
+                <span class="badge-icon">📚</span>
+                <div class="badge-content">
+                  <div class="badge-label">Weekly hours</div>
+                  <div class="badge-value" id="heroBadgeHours">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-quote glass-effect">
+            <p id="dailyQuote">Consistency beats motivation every single day.</p>
+          </div>
+        </section>
+
+        <section class="analytics-section fade-in-up">
+          <div class="section-header">
+            <h2>Dashboard Analytics</h2>
+            <p>Real-time performance metrics</p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card glass-effect stat-animate">
+              <div class="stat-icon">⏳</div>
+              <p class="stat-name">Study Hours</p>
+              <h3 class="stat-number" id="totalStudyHours">0</h3>
+              <span class="stat-unit">hrs</span>
+            </div>
+            <div class="stat-card glass-effect stat-animate">
+              <div class="stat-icon">🚀</div>
+              <p class="stat-name">Productivity</p>
+              <h3 class="stat-number" id="productivityScore">0</h3>
+              <span class="stat-unit">/100</span>
+            </div>
+            <div class="stat-card glass-effect stat-animate">
+              <div class="stat-icon">🔥</div>
+              <p class="stat-name">Streak</p>
+              <h3 class="stat-number" id="studyStreak">0</h3>
+              <span class="stat-unit">days</span>
+            </div>
+            <div class="stat-card glass-effect stat-animate">
+              <div class="stat-icon">🎯</div>
+              <p class="stat-name">Focus</p>
+              <h3 class="stat-number" id="avgFocus">0</h3>
+              <span class="stat-unit">/10</span>
+            </div>
+            <div class="stat-card glass-effect stat-animate">
+              <div class="stat-icon">🧠</div>
+              <p class="stat-name">Accuracy</p>
+              <h3 class="stat-number" id="accuracyPct">0</h3>
+              <span class="stat-unit">%</span>
+            </div>
+            <div class="stat-card glass-effect stat-animate">
+              <div class="stat-icon">📊</div>
+              <p class="stat-name">Questions</p>
+              <h3 class="stat-number" id="totalQuestions">0</h3>
+              <span class="stat-unit">solved</span>
+            </div>
+            <div class="stat-card glass-effect stat-animate">
+              <div class="stat-icon">📅</div>
+              <p class="stat-name">Consistency</p>
+              <h3 class="stat-number" id="weeklyConsistency">0</h3>
+              <span class="stat-unit">%</span>
+            </div>
+            <div class="stat-card glass-effect stat-animate">
+              <div class="stat-icon">⭐</div>
+              <p class="stat-name">Avg Rating</p>
+              <h3 class="stat-number" id="avgDayRating">0</h3>
+              <span class="stat-unit">/10</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="insights-section fade-in-up">
+          <div class="section-header">
+            <h2>AI Insights</h2>
+            <p>Intelligent recommendations from your data</p>
+          </div>
+          <div class="insights-container glass-effect">
+            <div id="insightsList" class="insights-list">
+              <p class="empty-state">Save entries to unlock AI insights.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="charts-section fade-in-up">
+          <div class="section-header">
+            <h2>Performance Charts</h2>
+            <p>Visualize your preparation journey</p>
+          </div>
+          <div class="charts-grid">
+            <div class="chart-card glass-effect">
+              <h3>Study Hours Trend</h3>
+              <canvas id="studyChart" height="60"></canvas>
+            </div>
+            <div class="chart-card glass-effect">
+              <h3>Focus Score</h3>
+              <canvas id="focusChart" height="60"></canvas>
+            </div>
+            <div class="chart-card glass-effect">
+              <h3>Subject Balance</h3>
+              <canvas id="subjectChart" height="60"></canvas>
+            </div>
+            <div class="chart-card glass-effect">
+              <h3>Productivity Trend</h3>
+              <canvas id="productivityChart" height="60"></canvas>
+            </div>
+            <div class="chart-card glass-effect full-width">
+              <h3>Sleep vs Focus Correlation</h3>
+              <canvas id="sleepChart" height="60"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section class="goals-section fade-in-up">
+          <div class="section-header">
+            <h2>Goals & Heatmap</h2>
+            <p>Track your daily targets and consistency</p>
+          </div>
+          <div class="goals-container">
+            <div class="goal-card glass-effect">
+              <p class="goal-name">Daily Study</p>
+              <div class="progress-bar">
+                <div class="progress-fill" id="goalStudyBar" style="width:0%"></div>
+              </div>
+              <p class="goal-info"><span id="goalStudyValue">0</span> / 6 hours</p>
+            </div>
+            <div class="goal-card glass-effect">
+              <p class="goal-name">Questions</p>
+              <div class="progress-bar">
+                <div class="progress-fill" id="goalQuestionBar" style="width:0%"></div>
+              </div>
+              <p class="goal-info"><span id="goalQuestionValue">0</span> / 100</p>
+            </div>
+            <div class="goal-card glass-effect">
+              <p class="goal-name">Mocks</p>
+              <div class="progress-bar">
+                <div class="progress-fill" id="goalMockBar" style="width:0%"></div>
+              </div>
+              <p class="goal-info"><span id="goalMockValue">0</span> / 3</p>
+            </div>
+          </div>
+          <div class="heatmap-card glass-effect">
+            <h3>Activity Heatmap</h3>
+            <p class="heatmap-label">Green = productive, Amber = steady, Red = needs focus</p>
+            <div id="heatmapContainer" class="heatmap-grid"></div>
+          </div>
+        </section>
+
+        <section class="history-section fade-in-up">
+          <div class="section-header">
+            <h2>Recent Sessions</h2>
+            <p>Review your preparation timeline</p>
+          </div>
+          <div class="history-container glass-effect">
+            <div id="historyList" class="history-timeline">
+              <p class="empty-state">No sessions yet. Start logging your prep.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section fade-in-up">
+          <div class="section-header">
+            <h2>Daily Tracker</h2>
+            <p>Log today's preparation session</p>
+          </div>
+          <form id="trackerForm" class="tracker-form glass-effect">
+            <div class="form-grid">
+              <div class="form-section-group">
+                <h4>Study Tracking</h4>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="date">Date</label>
+                    <input id="date" type="date" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="morningStudy">Morning Study (hrs)</label>
+                    <input id="morningStudy" type="number" step="0.5" placeholder="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="nightStudy">Night Study (hrs)</label>
+                    <input id="nightStudy" type="number" step="0.5" placeholder="0" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="dppPractice">Practice (hrs)</label>
+                    <input id="dppPractice" type="number" step="0.5" placeholder="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="lectures">Lectures (hrs)</label>
+                    <input id="lectures" type="number" step="0.5" placeholder="0" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-group">
+                <h4>Questions Solved</h4>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="physicsQ">Physics</label>
+                    <input id="physicsQ" type="number" placeholder="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="chemistryQ">Chemistry</label>
+                    <input id="chemistryQ" type="number" placeholder="0" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="mathsQ">Maths</label>
+                    <input id="mathsQ" type="number" placeholder="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="questionsAttempted">Attempted</label>
+                    <input id="questionsAttempted" type="number" placeholder="0" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="questionsCorrect">Correct</label>
+                    <input id="questionsCorrect" type="number" placeholder="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="accuracyPctInput">Accuracy</label>
+                    <input id="accuracyPctInput" type="text" readonly placeholder="0%" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-group">
+                <h4>Mock Test</h4>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="mockName">Mock Name</label>
+                    <input id="mockName" type="text" placeholder="e.g., JEE Main 2024" />
+                  </div>
+                  <div class="form-group">
+                    <label for="mockScore">Score</label>
+                    <input id="mockScore" type="number" placeholder="0" />
+                  </div>
+                </div>
+                <div class="form-group full-width">
+                  <label for="mentorNote">Mentor Remark</label>
+                  <textarea id="mentorNote" rows="2" placeholder="Key feedback..."></textarea>
+                </div>
+              </div>
+
+              <div class="form-section-group">
+                <h4>Sleep & Health</h4>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="sleepHours">Sleep Hours</label>
+                    <input id="sleepHours" type="number" step="0.1" placeholder="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="sleepQuality">Sleep Quality (1-10)</label>
+                    <input id="sleepQuality" type="number" min="1" max="10" placeholder="5" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-group">
+                <h4>Focus & Energy</h4>
+                <div class="form-group-slider">
+                  <label for="energySlider">Energy Level</label>
+                  <input id="energySlider" type="range" min="1" max="10" value="7" />
+                  <span class="slider-value" id="energyValue">7</span>
+                </div>
+                <div class="form-group-slider">
+                  <label for="focusSlider">Focus Quality</label>
+                  <input id="focusSlider" type="range" min="1" max="10" value="8" />
+                  <span class="slider-value" id="focusValue">8</span>
+                </div>
+              </div>
+
+              <div class="form-section-group">
+                <h4>Reflection</h4>
+                <div class="form-group full-width">
+                  <label for="reflection">Reflection</label>
+                  <textarea id="reflection" rows="2" placeholder="What did you learn?"></textarea>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="priority1">Priority 1</label>
+                    <input id="priority1" type="text" placeholder="Top focus" />
+                  </div>
+                  <div class="form-group">
+                    <label for="priority2">Priority 2</label>
+                    <input id="priority2" type="text" placeholder="Secondary focus" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-group">
+                <h4>Distractions</h4>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="phoneUsage">Phone Usage (mins)</label>
+                    <input id="phoneUsage" type="number" placeholder="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="socialMedia">Social Media (mins)</label>
+                    <input id="socialMedia" type="number" placeholder="0" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button id="saveBtn" type="button" class="btn btn-primary">Save Entry</button>
+              <button id="resetBtn" type="button" class="btn btn-secondary">Reset</button>
+              <button id="exportBtn" type="button" class="btn btn-ghost">Export Data</button>
+              <button id="copyBtn" type="button" class="btn btn-ghost">Copy</button>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>JEE Command Center — Premium Elite Preparation Dashboard</p>
+      </footer>
+    </div>
+  </body>
+</html>
