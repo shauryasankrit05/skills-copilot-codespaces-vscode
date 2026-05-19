@@ -1,0 +1,198 @@
+:root {
+    /* Main Canvas Colors */
+    --bg: #f8fafc;                 /* Ultra-clean, soft light-grey canvas (Slate 50) */
+    --surface: #ffffff;            /* Crisp white cards */
+    --surface-strong: #f1f5f9;     /* Subtle contrast for input backgrounds (Slate 100) */
+    --border: #e2e8f0;             /* Razor-thin, clean borders (Slate 200) */
+    
+    /* Typography & Hierarchy */
+    --text: #0f172a;               /* Deep charcoal for maximum readability (Slate 900) */
+    --muted: #64748b;              /* Elegant cool-grey for labels and secondary text (Slate 500) */
+    
+    /* Premium Brand Accents */
+    --primary: #4338ca;            /* Sophisticated Deep Indigo for main buttons/headers */
+    --accent: #2563eb;             /* Vibrant Royal Blue for interactive elements/sliders */
+    
+    /* Semantic Feedback Colors (Clean, desaturated professional tones) */
+    --success: #15803d;            /* Forest green for good ratings/scores */
+    --warning: #b45309;            /* Muted amber for warnings */
+    --danger: #b91c1c;             /* Deep crimson for critical issues/delete buttons */
+    
+    /* Elegant Depth Shadow */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+    background-color: var(--surface-strong);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 10px 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    background-color: var(--surface);
+}
+button.btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button.btn-primary:hover {
+    background: #3730a3; /* Marginally darker indigo */
+}
+
+button.btn-primary:active {
+    transform: scale(0.98);
+}
+
+button.btn-secondary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+button.btn-secondary:hover {
+    color: var(--text);
+    border-color: var(--muted);
+    background: var(--surface-strong);
+}
+.card, .history-entry {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+}
+
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+body.dark {
+  --bg: #0f172a;
+  --surface: #111827;
+  --text: #f8fafc;
+  --border: #334155;
+}
+.card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 18px;
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.08);
+
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+body.dark {
+    --bg: #0f172a;
+    --surface: #111827;
+    --surface-strong: #1e293b;
+    --border: #334155;
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --primary: #6366f1;
+    --accent: #3b82f6;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+.live-clock {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+.quote-box {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 14px;
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #3b82f6
+    );
+
+    color: white;
+    font-weight: 500;
+}
+.progress-bar {
+    width: 100%;
+    height: 16px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        90deg,
+        #6366f1,
+        #3b82f6
+    );
+
+    transition: width 0.5s ease;
+}
+.floating-save {
+
+    position: fixed;
+
+    bottom: 30px;
+    right: 30px;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.2);
+
+    z-index: 999;
+}
